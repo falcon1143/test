@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>メニュー下部配置・白黒基調のブログ</title>
+    <!-- Google Fontsを読み込み -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* CSSリセット */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 全体設定 */
+        body {
+            font-size: 10px; /* ベースフォントサイズを10pxに設定 */
+            font-family: 'Noto Sans JP', sans-serif; /* 日本語フォント */
+            line-height: 1.7;
+            background-color: #f8f8f8;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* rem単位でのサイズ指定（bodyの10pxが基準） */
+        h1 { font-size: 3.2rem; } /* 32px */
+        h2 { font-size: 2.4rem; } /* 24px */
+        h3 { font-size: 1.8rem; } /* 18px */
+        p, a, li { font-size: 1.4rem; } /* 14px */
+        .date { font-size: 1.2rem; } /* 12px */
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .container {
+            max-width: 100rem; /* 1000px */
+            margin: 0 auto;
+            padding: 2rem; /* 20px */
+        }
+
+        /* ヘッダー */
+        header {
+            background-color: #ffffff;
+            text-align: center;
+            /* ナビゲーションもヘッダー内なので、シャドウはヘッダー全体にかける */
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08); /* 少し強めのシャドウ */
+            margin-bottom: 3rem;
+        }
+
+        .site-branding {
+            padding: 2rem 0; /* サイトタイトル部分のパディング */
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            color: #222;
+            margin-bottom: 1rem;
+        }
+
+        header p {
+            font-size: 1.5rem;
+            color: #777;
+        }
+
+        /* ナビゲーションバー */
+        .main-nav {
+            background-color: #ffffff; /* ナビゲーションバーの背景色を白に */
+            border-top: 0.1rem solid #eee; /* タイトルとの区切り */
+            padding: 1rem 0; /* 10px */
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+        }
+
+        .main-nav ul li a {
+            color: #333; /* メニュー文字色を黒に */
+            font-size: 1.6rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .main-nav ul li a:hover {
+            background-color: #f0f0f0; /* ホバー時の背景色を薄いグレーに */
+            color: #007bff; /* ホバー時の文字色を主要なリンク色に */
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 4rem;
+        }
+
+        /* ブログ投稿エリア */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .post {
+            background-color: #ffffff;
+            padding: 3rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 0.6rem 1.5rem rgba(0, 0, 0, 0.12);
+        }
+
+        .post h2 {
+            font-family: 'Playfair Display', serif;
+            color: #333;
+            margin-bottom: 1rem;
+            border-bottom: 0.2rem solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .post .date {
+            color: #888;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .post p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .post .read-more {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 0.5rem;
+            font-size: 1.3rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .post .read-more:hover {
+            background-color: #0056b3;
+        }
+
+        /* サイドバー */
+        .sidebar {
+            background-color: #ffffff;
+            padding: 2.5rem;
+            border-radius: 0.8rem;
+            box-shadow: 0 0.4rem 1rem rgba(0, 0, 0, 0.08);
+        }
+
+        .sidebar h3 {
+            font-family: 'Noto Sans JP', sans-serif;
+            color: #333;
+            margin-bottom: 1.5rem;
+            border-bottom: 0.1rem solid #eee;
+            padding-bottom: 1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul li a {
+            color: #555;
+            display: block;
+            padding: 0.5rem 0;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: #007bff;
+            background-color: #f0f0f0;
+            padding-left: 0.5rem;
+            border-radius: 0.4rem;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background-color: #333;
+            color: #fff;
+            margin-top: 5rem;
+            font-size: 1.3rem;
+        }
+
+        /* ===== レスポンシブデザイン ===== */
+
+        /* タブレット向け */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 1.5rem;
+            }
+            .main-content {
+                gap: 3rem;
+            }
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2.2rem; }
+            h3 { font-size: 1.6rem; }
+            p, a, li { font-size: 1.3rem; }
+            .date { font-size: 1.1rem; }
+            header p { font-size: 1.4rem; }
+            .main-nav ul li a { font-size: 1.4rem; }
+            .main-nav ul { gap: 1.5rem; }
+        }
+
+        /* スマートフォン向け */
+        @media (max-width: 767px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .post, .sidebar {
+                padding: 2rem;
+            }
+            header h1 {
+                font-size: 2.4rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+            h2 { font-size: 1.9rem; }
+            h3 { font-size: 1.5rem; }
+            p, a, li { font-size: 1.2rem; }
+            .date { font-size: 1rem; }
+            
+            .main-nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .main-nav ul li a {
+                padding: 0.8rem 1rem;
+                width: 100%;
+                max-width: 20rem;
+            }
+        }
+
+        /* さらに小さなスマートフォン向け */
+        @media (max-width: 480px) {
+            .container {
+                padding: 1rem;
+            }
+            header h1 {
+                font-size: 2rem;
+            }
+            header p {
+                font-size: 1.1rem;
+            }
+            .post h2 {
+                font-size: 1.7rem;
+            }
+            .sidebar h3 {
+                font-size: 1.4rem;
+            }
+            p, a, li { font-size: 1.1rem; }
+            .date { font-size: 0.9rem; }
+            footer {
+                padding: 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="site-branding container">
+            <h1>レスポンシブな私のブログ</h1>
+            <p>様々なデバイスで快適に読めるブログ</p>
+        </div>
+        <div class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#">ホーム</a></li>
+                    <li><a href="#">ブログ</a></li>
+                    <li><a href="#">カテゴリー</a></li>
+                    <li><a href="#">プロフィール</a></li>
+                    <li><a href="#">お問い合わせ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content-wrapper">
+        <div class="main-content">
+            <div class="blog-posts">
+                <article class="post">
+                    <h2>デバイスフレンドリーなWebデザインの秘訣</h2>
+                    <span class="date">2023年10月27日</span>
+                    <p>現代のWebサイトは、PCだけでなくスマートフォンやタブレットなど、あらゆるデバイスで適切に表示される必要があります。レスポンシブデザインは、この課題を解決するための最も効果的なアプローチです。</p>
+                    <p>CSSのメディアクエリを駆使し、ビューポートの幅に応じてレイアウトやフォントサイズを調整することで、ユーザーはどのデバイスからでも最高の体験を得ることができます。</p>
+                    <a href="#" class="read-more">続きを読む</a>
+                </article>
+
+                <article class="post">
+                    <h2>モバイルファースト開発の重要性</h2>
+                    <span class="date">2023年10月26日</span>
+                    <p>モバイルファーストとは、まずモバイルデバイス向けにデザイン・開発を行い、その後、PCなどの大画面向けに拡張していく手法です。これにより、限られた画面スペースでの情報整理やパフォーマンス最適化が自然と促進されます。</p>
+                    <p>Googleの検索ランキングでもモバイルフレンドリーなサイトが優遇される傾向にあるため、SEO対策としても非常に有効です。今後のWeb開発において、モバイルファーストは不可欠な視点となるでしょう。</p>
+                    <a href="#" class="read-more">続きを読む</a>
+                </article>
+
+                <article class="post">
+                    <h2>HTMLとCSSで実現する美しいUI</h2>
+                    <span class="date">2023年10月25日</span>
+                    <p>Webページの見た目を決定づけるHTMLとCSSは、その組み合わせ方次第で無限のデザイン表現が可能です。セマンティックなHTML構造と効率的なCSS記述は、美しいだけでなく保守性にも優れたUIを生み出します。</p>
+                    <p>FlexboxやGridといった強力なレイアウトツールをマスターし、アニメーションやトランジションでインタラクティブな要素を追加することで、ユーザーを惹きつける魅力的なWebサイトを構築できます。</p>
+                    <a href="#" class="read-more">続きを読む</a>
+                </article>
+            </div>
+
+            <aside class="sidebar">
+                <h3>カテゴリー</h3>
+                <ul>
+                    <li><a href="#">レスポンシブWebデザイン</a></li>
+                    <li><a href="#">モバイル開発</a></li>
+                    <li><a href="#">フロントエンド技術</a></li>
+                    <li><a href="#">UI/UX</a></li>
+                </ul>
+
+                <h3>最近の投稿</h3>
+                <ul>
+                    <li><a href="#">メディアクエリ徹底解説</a></li>
+                    <li><a href="#">FlexboxとGridの使い分け</a></li>
+                    <li><a href="#">Webパフォーマンス最適化</a></li>
+                    <li><a href="#">CSS変数でデザイン管理</a></li>
+                </ul>
+            </aside>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 レスポンシブな私のブログ. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
