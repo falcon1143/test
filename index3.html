@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>私のブログ</title>
+<style>
+/* 基本設定 */
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f0f0f0; /* 全体の背景色 */
+display: flex; /* Flexboxでレイアウト */
+flex-direction: column; /* スマートフォン向けに縦並びをデフォルトに */
+min-height: 100vh; /* 画面全体の高さを確保 */
+}
+
+/* ヘッダー */
+header {
+background-color: #333;
+color: white;
+padding: 1rem;
+text-align: center;
+}
+
+/* メインコンテンツエリア */
+.container {
+display: flex;
+flex: 1; /* 残りのスペースを埋める */
+flex-direction: column; /* スマートフォン向けに縦並びをデフォルトに */
+}
+
+/* ナビゲーション（メニュー） */
+nav {
+background-color: #eee;
+padding: 1rem;
+width: 100%; /* スマートフォン向けに幅いっぱい */
+box-sizing: border-box;
+order: -1; /* スマートフォンでメニューを上にする */
+}
+nav ul {
+list-style: none;
+padding: 0;
+margin: 0;
+display: flex; /* 横並びにする */
+flex-wrap: wrap; /* 折り返しを許可 */
+justify-content: center; /* 中央寄せ */
+}
+nav li {
+margin: 0.5rem 1rem;
+}
+nav a {
+text-decoration: none;
+color: #333;
+font-weight: bold;
+}
+
+/* メインコンテンツ */
+main {
+padding: 1rem;
+flex: 1; /* 残りのスペースを埋める */
+background-color: white; /* ブログ記事の背景は白 */
+}
+
+/* 記事 */
+.article {
+background-color: white;
+border: 1px solid #ddd;
+padding: 1.5rem;
+margin-bottom: 1.5rem;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.article h2 {
+color: #333;
+margin-top: 0;
+}
+.article p {
+line-height: 1.6;
+color: #555;
+}
+
+/* フッター */
+footer {
+background-color: #333;
+color: white;
+text-align: center;
+padding: 1rem;
+margin-top: auto; /* コンテンツが少ない時にフッターを下に配置 */
+}
+
+/* PC版のレイアウト */
+@media (min-width: 768px) {
+body {
+flex-direction: row; /* PCでは横並び */
+}
+.container {
+flex-direction: row; /* PCでは横並び */
+flex: 1; /* 残りのスペースを埋める */
+}
+nav {
+width: 200px; /* PCでは左メニューの幅 */
+order: 0; /* PCでは通常の順序 */
+flex-shrink: 0; /* 幅が縮まないようにする */
+}
+nav ul {
+flex-direction: column; /* 縦並び */
+align-items: flex-start; /* 左寄せ */
+}
+main {
+flex: 1; /* 残りのスペースを埋める */
+margin-left: 0; /* 左メニューとの間隔 */
+}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<nav>
+		<Center>
+		<h1>私の素敵なブログ</h1>
+<p>日々の出来事や考えを綴ります</p>
+		</Center>
+<ul>
+<li><a href="#">ホーム</a></li>
+<li><a href="#">最新記事</a></li>
+<li><a href="#">カテゴリー</a></li>
+<li><a href="#">お問い合わせ</a></li>
+</ul>
+<br>
+<ul>
+<li><a href="#">000_</a></li>
+<li><a href="#">001_Goolge</a></li>
+<li><a href="#">002_YouTue</a></li>
+<li><a href="#">003_Netflix</a></li>
+<li><a href="#">004_Amazon</a></li>
+<li><a href="#">005_Windows</a></li>
+<li><a href="#">006_Goolge</a></li>
+<li><a href="#">007_Goolge</a></li>
+<li><a href="#">008_Goolge</a></li>
+<li><a href="#">009_Goolge</a></li>
+<li><a href="#">010_Goolge</a></li>
+<li><a href="#">001_Goolge</a></li>
+<li><a href="#">002_YouTue</a></li>
+<li><a href="#">003_Netflix</a></li>
+<li><a href="#">004_Amazon</a></li>
+<li><a href="#">005_Windows</a></li>
+<li><a href="#">006_Goolge</a></li>
+<li><a href="#">007_Goolge</a></li>
+<li><a href="#">008_Goolge</a></li>
+<li><a href="#">009_Goolge</a></li>
+<li><a href="#">010_Goolge</a></li>
+<li><a href="#">001_Goolge</a></li>
+<li><a href="#">002_YouTue</a></li>
+<li><a href="#">003_Netflix</a></li>
+<li><a href="#">004_Amazon</a></li>
+<li><a href="#">005_Windows</a></li>
+<li><a href="#">006_Goolge</a></li>
+<li><a href="#">007_Goolge</a></li>
+<li><a href="#">008_Goolge</a></li>
+<li><a href="#">009_Goolge</a></li>
+<li><a href="#">010_Goolge</a></li>
+<li><a href="#">100_</a></li>
+<li><a href="#">200_</a></li>
+<li><a href="#">300_</a></li>
+<li><a href="#">400_</a></li>
+<li><a href="#">500_</a></li>
+<li><a href="#">600_</a></li>
+<li><a href="#">700_</a></li>
+<li><a href="#">800_</a></li>
+<li><a href="#">900_</a></li>
+<li><a href="#">XXX_</a></li>
+</ul>
+</nav>
+
+<main>
+<div class="article">
+<h2>初めての投稿！ブログ開設しました</h2>
+<p>2023年10月27日</p>
+<p>
+こんにちは！今日からブログを始めます。このブログでは、私の趣味や日々の発見、学んだことなどを共有していきたいと思っています。
+初めてのことなので、至らない点も多いかと思いますが、温かく見守っていただけると嬉しいです。
+</p>
+<p>
+特に、最近ハマっているプログラミング学習や、新しいガジェットのレビューなどを中心に記事を書いていく予定です。
+どうぞよろしくお願いいたします！
+</p>
+</div>
+
+<div class="article">
+<h2>おすすめのカフェ巡り</h2>
+<p>2023年10月25日</p>
+<p>
+先日、都内のおしゃれなカフェをいくつか巡ってきました。特に印象的だったのは、〇〇駅近くにある「カフェ・ド・〇〇」です。
+落ち着いた雰囲気で、美味しいコーヒーと手作りのケーキが最高でした。読書にも集中できるので、また行きたいです。
+</p>
+<p>
+それぞれのカフェのレビューと写真を後日アップする予定なので、お楽しみに！
+</p>
+</div>
+
+<div class="article">
+<h2>効果的な学習方法について</h2>
+<p>2023年10月20日</p>
+<p>
+最近、効率的な学習方法について考える機会が増えました。私の場合、ポモドーロテクニックとアクティブラーニングを組み合わせることで、
+集中力を持続させつつ、より深く内容を理解できるようになりました。
+</p>
+<p>
+皆さんもおすすめの学習方法があれば、ぜひコメントで教えてくださいね！
+</p>
+</div>
+</main>
+</div>
+
+
+</body>
+</html>
